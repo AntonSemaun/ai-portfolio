@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<!DOCTYPE html>
+
+<html lang="ru"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Антон Семаун — AI Portfolio — Общая версия</title><style>
+:root{--bg:#0d0e11;--ink:#fff;--pink:#f0c8d2;--red:#ed402d;--yellow:#f3d433;--blue:#8b9beb;--steel:#c3c4ca}
+*{box-sizing:border-box}body{margin:0;background:#16171b;color:#f7f7f7;font-family:Arial,Helvetica,sans-serif}
+.toolbar{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#25272d;border-bottom:1px solid #383b43;position:sticky;top:0;z-index:10;flex-wrap:wrap}
+.toolbar .brand{font-size:13px;letter-spacing:.07em;font-weight:700;margin-right:auto}.toolbar button{background:#3d4048;border:1px solid #5d626c;color:#fff;padding:9px 15px;border-radius:7px;cursor:pointer;font:600 13px Arial}.toolbar button.active{background:#f2d634;color:#151515;border-color:#f2d634}.toolbar button:hover{filter:brightness(1.13)}.toolbar .hint{font-size:12px;color:#aeb1b8}.wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 100px);padding:22px}.stage-outer{position:relative;width:min(1200px,100%);aspect-ratio:1200/675}.stage{width:1200px;height:675px;position:absolute;left:0;top:0;transform:scale(var(--scale,1));transform-origin:top left;overflow:hidden;background:var(--bg)}.slide{display:none;position:absolute;inset:0;overflow:hidden}.slide.active{display:block}.editor-banner{font-size:12px;text-align:center;color:#b0b3ba;padding:5px 12px 16px} [data-k]{outline:0} body:not(.render) [data-k]:hover{outline:1px dotted rgba(255,255,255,.6);outline-offset:2px;cursor:text}body:not(.render) [data-k]:focus{outline:2px solid #64b5ff;outline-offset:3px;background-color:rgba(81,148,255,.07)}
+.oswald{font-family:'Roboto Condensed','Arial Narrow',Impact,sans-serif;font-stretch:condensed;font-weight:900;line-height:1.02;letter-spacing:-.7px;text-transform:uppercase}.smallcaps{font-family:'Roboto Condensed','Arial Narrow',Arial,sans-serif;font-size:19px;font-weight:900;text-transform:uppercase;letter-spacing:-.1px}.body{font-family:'Roboto Condensed',Arial,sans-serif;line-height:1.3}.page-no{position:absolute;left:42px;bottom:17px;color:#565861;font-family:Arial;font-size:12px;letter-spacing:.04em}
+.slide-1{background:#08090b}.s1-background{position:absolute;inset:0;background-image:url([embedded-image]);background-size:cover;background-position:center}.s1-pink{position:absolute;top:42px;left:42px;width:690px;height:592px;background:var(--pink);color:#151515;padding:35px 37px 26px}.s1-kicker{font-size:27px;color:#111;line-height:1}.s1-kicker .muted{color:#7d6971}.s1-headline{font-size:58px;line-height:.98;letter-spacing:-.9px;color:var(--red);white-space:pre-line;margin-top:22px;max-width:620px}.s1-under{margin-top:15px;font-size:18px;color:#262127;font-weight:700}.s1-lower{position:absolute;bottom:28px;left:37px;right:37px}.s1-rule{height:2px;background:#0b0b0b;margin-bottom:15px}.s1-columns{display:grid;grid-template-columns:1.3fr 1.05fr .75fr;gap:17px}.s1-columns .ftitle{font-size:17px;line-height:1.08}.s1-columns .fbody{font-size:13px;line-height:1.22;margin-top:5px}.s1-links{font-size:12px;letter-spacing:.04em;font-weight:700;margin-top:18px}.s1-frame-label{position:absolute;bottom:40px;right:27px;font-size:11px;color:#c9c9ca;letter-spacing:.035em}
+.slide-2{background:#0b0b0d}.s2-left{position:absolute;left:42px;top:23px;width:465px}.s2-head{font-size:68px;color:var(--red);line-height:1.01;white-space:pre-line}.s2-sub{font-size:29px;color:#eee;margin-top:14px;line-height:1.04}.s2-text{font-size:20px;line-height:1.25;color:#e0e0e0;margin-top:17px}.s2-text.second{margin-top:13px}.s2-grid{position:absolute;left:522px;top:42px;right:40px;bottom:62px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:7px}.s2-grid img,.s2-grid video{width:100%;height:100%;object-fit:cover}.s2-metric{position:absolute;bottom:48px;left:34px;background:var(--red);width:448px;height:152px;padding:16px 21px}.s2-number{font-size:73px;line-height:.95}.s2-creditlabel{font-size:33px;line-height:1;margin-top:3px}.s2-stats{font-size:14px;margin-top:10px;letter-spacing:.01em}.s2-caption{position:absolute;left:522px;bottom:35px;color:#8f8f94;font-size:11px;letter-spacing:.015em}
+.slide-3{background:#09090b}.s3-title{position:absolute;left:42px;top:18px;color:var(--yellow);font-size:72px}.s3-sub{position:absolute;left:42px;top:122px;color:#eee;font-size:22px;letter-spacing:.1px}.s3-cols{position:absolute;top:174px;bottom:47px;left:34px;right:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.s3-card{background:#17181d;position:relative;overflow:hidden;display:flex;flex-direction:column}.s3-photo{width:100%;height:217px;object-fit:cover;flex-shrink:0}.s3-phlabel{position:absolute;top:8px;left:8px;background:#ebeaec;color:#191919;padding:3px 7px;font-size:12px;font-weight:800}.s3-rule{height:5px;flex-shrink:0}.s3-details{padding:11px 16px;overflow:hidden}.s3-card-title{font-size:36px;line-height:1.05;margin:0 0 14px}.s3-smalllabel{font-size:15px;color:#babac0;margin-top:9px}.s3-copy{font-size:17px;color:#f3f3f3;line-height:1.19;margin-top:3px}.s3-card:nth-child(1) .s3-rule{background:#f2d434}.s3-card:nth-child(2) .s3-rule{background:#e8baca}.s3-card:nth-child(3) .s3-rule{background:#8b9beb}.s3-card:nth-child(1) .s3-card-title{color:#f2d434}.s3-card:nth-child(2) .s3-card-title{color:#efbed1}.s3-card:nth-child(3) .s3-card-title{color:#99abff}
+
+/* WAYLAND — layout follows the image wall and typography of the Claude original, page 2. */
+.slide-4{background:#0b0b0e}
+.s4-title{position:absolute;left:42px;top:61px;width:468px;color:#f2d641;font-size:100px;letter-spacing:-.9px;line-height:.94}
+.s4-tagline{position:absolute;left:43px;top:246px;width:442px;color:#f8f8f8;font-size:36px;line-height:1.04;white-space:pre-line}
+.s4-copy{position:absolute;left:43px;top:371px;width:426px;color:#eaeaea;font-size:22px;line-height:1.3}
+.s4-gallery{position:absolute;left:521px;top:44px;width:640px;height:572px;display:grid;grid-template-columns:265px 178px 178px;grid-template-rows:282px 282px;gap:8px}
+.s4-image{display:block;width:100%;height:100%;object-fit:cover;border:0;margin:0}
+.s4-image.hero{grid-column:1;grid-row:1 / span 2;object-position:center center}
+.s4-image.mask{grid-column:2;grid-row:1;object-position:center center}
+.s4-image.warrior{grid-column:3;grid-row:1;object-position:center center}
+.s4-image.city{grid-column:2 / span 2;grid-row:2;object-position:center 46%}
+.slide-5{background:#08090b}.s5-grid{display:grid;grid-template-columns:1fr 1fr;height:100%;padding:50px 72px 86px;column-gap:110px}.s5-head{font-size:66px;color:#fff;line-height:1.02;min-height:139px}.s5-right .s5-head{color:var(--yellow)}.s5-note{margin-top:-20px;min-height:90px;font-size:18px;color:#c9c9ce}.s5-item{margin-top:30px}.s5-itemtitle{font-size:39px;line-height:1.03;color:#eee}.s5-itembody{font-size:21px;color:#c9c9cd;margin-top:8px;line-height:1.25}.s5-bottom-note{position:absolute;left:72px;bottom:93px;color:#9fa0a6;font-size:15px}.s5-footer{position:absolute;left:42px;right:42px;bottom:32px;border-top:2px solid #e2e2e3;padding-top:12px;font-size:19px;white-space:nowrap;color:#f1f1f1}
+body.render{background:#000}.render .toolbar,.render .editor-banner{display:none}.render .wrap{padding:0;min-height:auto;display:block}.render .stage-outer{width:1200px;height:675px;aspect-ratio:auto}.render .stage{transform:none!important}
+
+body {background:#202125; color:#fff}
+.app-toolbar{display:flex;align-items:center;gap:14px;padding:12px 20px;background:#27282f;position:sticky;top:0;z-index:50;flex-wrap:wrap;font:14px Arial,sans-serif}
+.app-toolbar strong{margin-right:auto;letter-spacing:.025em}.app-toolbar button{border:1px solid #666974;padding:10px 14px;background:#363942;color:#fff;font:700 13px Arial;border-radius:5px;cursor:pointer}
+.app-toolbar button:first-of-type{background:#ed402d;border-color:#ed402d}.app-toolbar .hint{font-size:12px;color:#c7c7c9}
+.slide-count{font:700 13px Arial;min-width:48px;text-align:center}
+.editor-bottom{font:13px Arial;color:#999ba6;text-align:center;padding:14px 10px}
+.stage-outer{margin:24px auto 0}
+.slide{display:none}.slide.active{display:block}
+.slide-1 .s1-photo{position:absolute;inset:0 0 0 600px;background:#111216}
+.slide-1 .s1-photo .cover-photo{width:100%;height:100%;object-fit:cover;object-position:center}
+.s1-intro{font-family:'Roboto Condensed','Arial Narrow',Arial,sans-serif;font-size:18px;line-height:1.2;color:#262127;margin-top:17px;max-width:607px}
+.s1-headline{margin-top:19px;font-size:65px}.s1-under{margin-top:12px}.s1-lower{bottom:28px}
+.slide-triptych{background:#09090b}
+.slide-triptych .s3-photo-wrap{position:relative;height:217px;flex-shrink:0;overflow:hidden}
+.slide-triptych .s3-photo{width:100%;height:217px;object-fit:cover}
+.slide-triptych .s3-phlabel{z-index:3;top:8px;left:8px;background:#eee;color:#191919}
+.slide-triptych .s3-card-title{white-space:pre-line;margin:0 0 8px;line-height:1.02;font-size:34px}
+.slide-triptych .s3-smalllabel{margin-top:9px}.slide-triptych .s3-copy{margin-top:5px}
+.slide-2 .s3-card:nth-child(2) .s3-card-title{font-size:29px}
+.slide-2 .s3-card:nth-child(3) .s3-card-title{font-size:31px}
+.slide-2 .s3-title{font-size:72px}
+.slide-4 .s3-title,.slide-5 .s3-title,.slide-7 .s3-title{left:42px;top:18px;line-height:1.01;font-size:72px}
+.slide-4 .s3-sub,.slide-5 .s3-sub,.slide-7 .s3-sub{left:42px;top:122px;font-size:22px}
+.slide-4 .s3-cols,.slide-5 .s3-cols,.slide-7 .s3-cols{top:174px;bottom:47px;left:34px;right:34px}
+.slide-4 .s3-photo,.slide-5 .s3-photo,.slide-7 .s3-photo{height:217px}
+.slide-3 .s2-head,.slide-6 .s2-head{white-space:pre-line;line-height:1.03;font-size:61px}
+.slide-3 .s2-sub,.slide-6 .s2-sub{font-size:25px;margin-top:14px;line-height:1.04}
+.slide-3 .s2-text,.slide-6 .s2-text{font-size:20px;margin-top:17px;line-height:1.22}
+.slide-3 .s2-metric,.slide-6 .s2-metric{display:block;bottom:48px}
+.slide-3 .s2-number,.slide-6 .s2-number{font-size:72px}
+.slide-3 .s2-creditlabel,.slide-6 .s2-creditlabel{font-size:32px}
+.slide-6 .agent-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:7px}
+.agent-cell{display:flex;flex-direction:column;justify-content:space-between;background:#191b23;padding:14px;overflow:hidden;border-top:4px solid #ed402d}
+.agent-cell:nth-child(3n+2){border-color:#f3d433}.agent-cell:nth-child(3n){border-color:#8b9beb}
+.agent-number{color:#6f7280;font-family:Arial,sans-serif;font-size:14px}.agent-label{font-size:27px;line-height:1.05;color:#f5f5f5;white-space:normal;overflow-wrap:anywhere}
+.slide-contact{background:#09090b}.contact-side{position:absolute;left:0;top:0;width:410px;height:675px;overflow:hidden}
+.contact-side .contact-photo{width:100%;height:100%;object-fit:cover;object-position:center}
+.contact-text{position:absolute;left:453px;top:86px;right:55px}
+.contact-big{font-size:104px;color:#f3d433}
+.contact-rule{margin:30px 0;height:3px;background:#f3d433}
+.contact-small{font-size:29px;color:#f0c8d2;margin-bottom:32px}
+.contact-mail{font-family:'Roboto Condensed',Arial,sans-serif;font-size:30px;line-height:1.3;margin:14px 0}
+.contact-note{font:20px 'Roboto Condensed',Arial,sans-serif;color:#aaaeb7;margin-top:63px}
+[contenteditable]{outline:none;cursor:text}[contenteditable]:hover{outline:1px dotted #a1a2ab;outline-offset:2px}[contenteditable]:focus{outline:2px solid #f3d433;outline-offset:3px}
+img[data-media]{cursor:pointer}img[data-media]:hover{filter:brightness(.85)}
+.media-hover{display:none}
+@media print {.app-toolbar,.editor-bottom{display:none!important}.wrap{padding:0}.stage-outer{width:1200px!important;margin:0}.stage{transform:none!important}}
+
+body.render .app-toolbar, body.render .editor-bottom{display:none!important;}
+body.render .wrap{padding:0!important;display:block!important;min-height:0!important;}
+body.render .stage-outer{width:1200px!important;height:675px!important;margin:0!important;}
+body.render .stage{transform:none!important;}
+
+.agent-bottom{display:block}.agent-copy{font-family:Arial,sans-serif;font-size:12px;line-height:1.15;color:#c1c5d2;margin-top:8px;white-space:normal;overflow-wrap:anywhere}.slide-7 .s3-photo-wrap .stacked-info{position:absolute;right:8px;bottom:8px;background:rgba(10,10,12,.76);color:#f3f3f3;padding:4px 7px;font-size:11px;font-weight:700;letter-spacing:.01em}
+
+.slide-6 .agent-media{position:absolute;inset:0;z-index:0;pointer-events:none;}
+.slide-6 .agent-media img,.slide-6 .agent-media video{width:100%;height:100%;display:block;object-fit:cover;}
+.slide-6 .agent-media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,15,21,.16) 0%,rgba(14,15,21,.28) 36%,rgba(14,15,21,.94) 100%);}
+.slide-6 .agent-cell{overflow:hidden;}
+.slide-6 .agent-cell .agent-number,.slide-6 .agent-cell .agent-bottom{position:relative;z-index:1;}
+.slide-6 .agent-cell .agent-bottom{top:auto;left:13px;right:13px;bottom:11px;position:absolute;display:flex;flex-direction:column;}
+.slide-6 .agent-cell .agent-label{min-height:auto;max-height:none;text-shadow:0 2px 10px rgba(0,0,0,.35);}
+.slide-6 .agent-cell .agent-copy{color:#edf0f7;text-shadow:0 2px 10px rgba(0,0,0,.42);font-size:11.7px;line-height:1.18;}
+.slide-6 .agent-cell:not(:has(.agent-media)){background:radial-gradient(ellipse at 60% 4%,#292d3c,#191b23 68%);}
+.slide-6 .agent-cell .agent-copy span{display:inline;}
+.slide-6 .s2-number.aiwf{font-size:54px;letter-spacing:.02em;}
+
+.slide-mainroad{background:#08090b;color:#f3f3f5;}
+.mainroad-wrap{position:absolute;left:72px;right:72px;top:54px;bottom:68px;}
+.mainroad-kicker{font-size:19px;letter-spacing:.12em;color:#f3d433;}
+.mainroad-title{font-size:64px;line-height:.98;margin-top:16px;max-width:900px;}
+.mainroad-sub{font-size:24px;line-height:1.05;margin-top:14px;max-width:800px;color:#cfd2db;}
+.mainroad-text{font-size:21px;line-height:1.28;max-width:930px;margin-top:20px;color:#f1f2f6;}
+.mainroad-text + .mainroad-text{margin-top:16px;}
+.mainroad-quote{position:absolute;right:0;bottom:6px;width:360px;padding:18px 20px;border-top:4px solid #f3d433;background:radial-gradient(ellipse at 50% 0%,#232737,#13151c 72%);font-size:22px;line-height:1.18;color:#ffffff;}
+.mainroad-quote span{display:block;}
+
+/* V12: legible multi-sentence descriptions in the approved 3x3 layout. */
+.slide-6 .agent-copy{font-size:11px;line-height:1.18;letter-spacing:-.12px;margin-top:7px;}
+.slide-6 .agent-label{font-size:20px;line-height:1.0;min-height:0;max-height:none;}
+.slide-6 .agent-cell{padding:12px;}
+.slide-6 .agent-cell .agent-bottom{left:12px;right:12px;bottom:10px;}
+.slide-6 .agent-cell .agent-copy br{display:block;content:"";margin-top:3px;}
+.slide-5 .s3-card:nth-child(3) .s3-phlabel{font-size:13px;white-space:nowrap;max-width:calc(100% - 16px);}
+.slide-5 .s3-card:nth-child(3) .s3-card-title{font-size:30px;}
+.slide-5 .s3-card:nth-child(3) .s3-smalllabel{font-size:15px;line-height:1.06;}
+.slide-5 .s3-card:nth-child(3) .s3-copy{font-size:16px;line-height:1.17;}
+.slide-6 .agent-cell .agent-number{position:absolute;top:12px;left:12px;z-index:2;}
+.slide-6 .agent-cell .agent-bottom{position:absolute;top:43px;left:12px;right:12px;bottom:8px;display:block;}
+.slide-6 .agent-cell .agent-label{font-size:17px;line-height:1.0;margin:0;min-height:0;max-height:none;}
+.slide-6 .agent-cell .agent-copy{font-size:10.5px;line-height:1.09;margin-top:6px;letter-spacing:-.12px;}
+.slide-6 .agent-cell .agent-copy br{margin-top:2px;}
+</style><style>
+.slide-2 .s3-photo-wrap video.s3-photo {display:block;width:100%;height:217px;object-fit:cover;object-position:center;background:#09090b;}
+</style><style>
+.slide-2 .s3-photo-wrap video.s3-photo {display:block;width:100%;height:217px;object-fit:cover;}
+</style><style>
+.slide-2 .s3-photo-wrap video.s3-photo {width:100%;height:217px;object-fit:cover;display:block;}
+</style><style id="portfolio-caption-refinements">
+/* Two requested presentation-label relocations; no card geometry is changed. */
+.slide-4 .s3-card:first-child .s3-phlabel,
+.slide-5 .s3-card:first-child .s3-phlabel{
+    left:auto;right:8px;top:8px;text-align:right;z-index:6;
+}
+/* Studio workflow annotations live on top of the video, not baked into the MP4. */
+.slide-4 .s3-card:first-child .s3-photo-wrap .studio-stage-label,
+.slide-4 .s3-card:first-child .s3-photo-wrap .studio-compare-labels{
+    position:absolute;z-index:5;bottom:10px;
+    color:#fff;font-family:'Roboto Condensed','Arial Narrow',Impact,sans-serif;
+    font-weight:900;font-stretch:condensed;letter-spacing:.25px;
+    pointer-events:none;
+}
+.slide-4 .s3-card:first-child .studio-stage-label{
+    right:10px;display:flex;align-items:center;justify-content:center;
+    min-width:44%;max-width:62%;min-height:39px;padding:5px 9px;
+    border:3px solid #f14737;background:rgba(11,11,13,.8);
+    text-align:center;text-transform:uppercase;font-size:14px;line-height:1.08;
+    text-shadow:0 1px 2px #000;
+}
+.slide-4 .s3-card:first-child .studio-compare-labels{
+    left:8px;right:8px;display:none;align-items:stretch;justify-content:space-between;gap:12px;
+}
+.slide-4 .s3-card:first-child .studio-compare-label{
+    width:43%;min-height:40px;display:flex;align-items:center;justify-content:center;
+    padding:5px 6px;text-align:center;text-transform:uppercase;font-size:13px;line-height:1.03;
+    background:rgba(11,11,13,.83);text-shadow:0 1px 2px #000;
+}
+.slide-4 .s3-card:first-child .studio-compare-label:first-child{border:3px solid white}
+.slide-4 .s3-card:first-child .studio-compare-label:last-child{border:3px solid #f14737}
+.slide-4 .s3-card:first-child .studio-stage-label[hidden],
+.slide-4 .s3-card:first-child .studio-compare-labels[hidden]{display:none!important}
+.slide-4 .s3-card:first-child .studio-compare-labels:not([hidden]){display:flex}
+</style><style id="portfolio-v10-slide6-fixes">
+/* v10 — slide 6 only: preserve all content and metric block. */
+.slide-6 .s2-text {font-size:18.5px;line-height:1.18;margin-top:12px;}
+.slide-6 .s2-text.second {margin-top:12px;}
+.slide-6 .s2-sub {font-size:24px;margin-top:11px;}
+.slide-6 .agent-cell {position:relative;justify-content:flex-start;padding:13px;}
+.slide-6 .agent-number {position:absolute;top:14px;left:13px;font-size:13px;line-height:1.1;}
+.slide-6 .agent-bottom {position:absolute;top:51px;left:13px;right:13px;bottom:11px;display:flex;flex-direction:column;}
+.slide-6 .agent-label {font-size:21px;line-height:1.0;min-height:48px;max-height:51px;overflow-wrap:normal;word-break:normal;hyphens:auto;letter-spacing:-.2px;}
+.slide-6 .agent-copy {font-size:11.8px;line-height:1.23;margin-top:7px;color:#d0d3dd;overflow-wrap:normal;word-break:normal;}
+/* Each HORIZONTAL row is a single thematic category. */
+.slide-6 .agent-cell:nth-child(-n+3){border-top-color:#ed402d;}
+.slide-6 .agent-cell:nth-child(n+4):nth-child(-n+6){border-top-color:#f3d433;}
+.slide-6 .agent-cell:nth-child(n+7):nth-child(-n+9){border-top-color:#8b9beb;}
+</style><style>
+/* V14 — clean, non-editable presentation viewer. */
+body.viewer{margin:0;background:#111216;color:#f7f7f7;overflow:hidden;}
+body.viewer .wrap{margin:0;padding:12px;display:flex;align-items:center;justify-content:center;min-height:100svh;height:100svh;}
+body.viewer .stage-outer{margin:0;position:relative;flex:none;}
+body.viewer .stage{transform-origin:top left;}
+body.viewer .contact-mail a,body.viewer .s1-links a{color:inherit;text-decoration:none;cursor:pointer;}
+body.viewer .contact-mail a:hover,body.viewer .contact-mail a:focus-visible,body.viewer .s1-links a:hover,body.viewer .s1-links a:focus-visible{text-decoration:underline;text-underline-offset:4px;}
+body.viewer .contact-note{margin-top:28px;}
+body.viewer .contact-mail{margin-top:11px;margin-bottom:11px;}
+body.viewer .slide[contenteditable],body.viewer [contenteditable]{outline:none!important;cursor:default;}
+body.viewer .slide a{pointer-events:auto;}
+</style></head>
+<body class="viewer">
+<div class="wrap"><div class="stage-outer" id="out"><div class="stage" style="--scale: 1;"><section class="slide slide-1 active">
+<div class="s1-photo"><img alt="Медиа для замены" class="cover-photo" draggable="false" src="assets/image_1066bfa36789.jpg" style=""/></div>
+<div class="s1-pink"><div class="oswald s1-kicker"><span class="" style="">АНТОН СЕМАУН · AI PORTFOLIO</span></div>
+<div class="oswald s1-headline"><span class="" style="">ПРИВЕТ!
+МЕНЯ ЗОВУТ
+АНТОН.</span></div>
+<div class="s1-under"><span class="" style="">Каждый ИИ-адепт до того, как стал ИИ-адептом, имел прошлую жизнь. В своей я был режиссёром, постпродюсером и креативным директором. Это, конечно же, шутка, но не совсем)</span></div>
+<div class="s1-intro"><span class="" style="">Последние полтора года очень плотно работаю с AI. После того как я снял фильм на 25 летие ГПМХ я получил возможность освободиться себе время для изучения ИИ, того как он изменит мою профессию и того какие возможности он может мне дать. Дальше я покажу что уже получилось и что сейчас происходит. </span></div>
+<div class="s1-lower"><div class="s1-rule"></div><div class="s1-columns">
+<div><div class="ftitle oswald"><span class="" style="">РЕЖИССУРА</span></div><div class="fbody"><span class="" style="">Документальные фильмы и реклама</span></div></div>
+<div><div class="ftitle oswald"><span class="" style="">ПРОДЮСИРОВАНИЕ</span></div><div class="fbody"><span class="" style="">Постпродакшн и производство</span></div></div>
+<div><div class="ftitle oswald"><span class="" style="">AI</span></div><div class="fbody"><span class="" style="">Инструменты и агентные системы</span></div></div>
+</div><div class="s1-links"><span class="" style=""><a href="https://vimeo.com/antonsemaun" rel="noopener noreferrer" target="_blank">VIMEO.COM/ANTONSEMAUN</a></span></div></div></div>
+</section><section class="slide slide-2 slide-triptych"><div class="oswald s3-title"><span class="" style="">МОЙ ОПЫТ</span></div><div class="oswald s3-sub"><span class="" style="">РЕЖИССУРА  /  ПОСТПРОДАКШН  /  КРЕАТИВНОЕ РУКОВОДСТВО</span></div><div class="s3-cols"><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="Режиссёрские работы: видеоколлаж" autoplay="" class="s3-photo" loop="" muted="" playsinline="" preload="metadata"><source src="assets/video_1cf31e0a2491.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">РЕЖИССУРА</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">РЕЖИССУРА</span></div>
+<div class="s3-smalllabel"><span class="" style="">ТРИ ДОКУМЕНТАЛЬНЫХ ПРОЕКТА</span></div>
+<div class="s3-copy"><span class="" style="">Forbes · Газпром-Медиа · «Креативный класс»</span></div>
+<div class="s3-smalllabel"><span class="" style="">А ТАКЖЕ РЕКЛАМА ДЛЯ БРЕНДОВ</span></div>
+<div class="s3-copy"><span class="" style="">ROLF, YANDEX, SUZUKI, VIKEK и др. </span></div></div></div><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="Постпродакшн — видеоколлаж Wink и Bird" autoplay="" class="s3-photo" loop="" muted="" playsinline="" preload="metadata"><source src="assets/video_592e0f845e49.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">ПОСТПРОДАКШН</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">ПРОДЮСИРОВАНИЕ</span></div>
+<div class="s3-smalllabel"><span class="" style="">ОПЫТ</span></div>
+<div class="s3-copy"><span class="" style="">Индилайт · Ростелеком · НМГ ДОК</span></div>
+<div class="s3-smalllabel"><span class="" style="">РОЛЬ</span></div>
+<div class="s3-copy"><span class="" style="">Ведение постпродакшна и работа с клиентом</span></div></div></div><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="VK Sport — работы креативного директора" autoplay="" class="s3-photo" loop="" muted="" playsinline="" preload="metadata"><source src="assets/video_89ee6c1749fe.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">КРЕАТИВНЫЙ ДИРЕКТОР</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">КРЕАТИВНЫЙ
+ДИРЕКТОР</span></div>
+<div class="s3-smalllabel"><span class="" style="">АГЕНТСТВО SVOI → ДЕПТРАНС</span></div>
+<div class="s3-copy"><span class="" style="">Моя гордость - выигранный годовой тендер для ВК спорт</span></div>
+<div class="s3-smalllabel"><span class="" style="">РЕЗУЛЬТАТ</span></div>
+<div class="s3-copy"><span class="" style="">Серия роликов · &gt;20 млн просмотров каждый </span></div></div></div></div><div class="page-no">02</div></section><section class="slide slide-3 slide-documentary">
+<div class="s2-left"><div class="oswald s2-head"><span class="" style="">СЕЙЧАС Я РЕЖИССИРУЮ</span></div>
+<div class="oswald s2-sub"><span class="" style="">ТЕЛЕВИЗИОННЫЙ ДОКУМЕНТАЛЬНЫЙ ФИЛЬМ ДЛЯ НМГ ДОК</span></div>
+<div class="body s2-text"><span class="" style="">Это первый мой проект для телевидения. Помимо интереса к формату с которым я еще не был знаком главным для меня толчком согласиться на этот проект был полный картбланс на использование ИИ. Так что помимо режиссуры я еще налаживаю постпродакшн как продюсер</span></div>
+<div class="body s2-text second"><span class="" style="">Работа продолжается: студия, реконструкции, B-roll, расшифровки и VFX</span></div>
+</div><div class="s2-grid"><video aria-label="Историческая реконструкция: порт" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_eb5289c7254d.jpg" preload="metadata" src="assets/video_072e051c3be9.mp4"></video><video aria-label="Спортивный финиш" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_bd5dc533705e.jpg" preload="metadata" src="assets/video_dbcc553913ab.mp4"></video><video aria-label="Производство и сельское хозяйство" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_751e8dbaf99f.jpg" preload="metadata" src="assets/video_913c8a9614f3.mp4"></video><video aria-label="Городская хроника: Нью-Йорк" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_156e476f6eb9.jpg" preload="metadata" src="assets/video_f8ecde4ec846.mp4"></video><video aria-label="Запуск ракеты" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_45208a170ebf.jpg" preload="metadata" src="assets/video_5093bf93697a.mp4"></video><video aria-label="Мировые события: репортажная подборка" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_1e17059bdf5e.jpg" preload="metadata" src="assets/video_cff32efb8a08.mp4"></video><video aria-label="Историческая реконструкция: чаепитие" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_68e213158475.jpg" preload="metadata" src="assets/video_241e6e81e32f.mp4"></video><video aria-label="Международная торговля и логистика" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_6074ded5cf97.jpg" preload="metadata" src="assets/video_98024e81f2e5.mp4"></video><video aria-label="Чёрно-белая историческая хроника" autoplay="" class="gallery-photo" loop="" muted="" playsinline="" poster="assets/image_4df542f12782.jpg" preload="metadata" src="assets/video_a278c0d71eba.mp4"></video></div>
+<div class="s2-metric"><div class="oswald s2-number"><span class="" style="">AI</span></div><div class="oswald s2-creditlabel"><span class="" style="">В ПРОИЗВОДСТВЕ</span></div><div class="s2-stats"><span class="" style="">NMG DOC · WORK IN PROGRESS</span></div></div>
+<div class="s2-caption"><span class="" style="">КАДРЫ ИЗ РАБОЧИХ МАТЕРИАЛОВ · НМГ ДОК</span></div><div class="page-no">03</div>
+</section><section class="slide slide-4 slide-triptych"><div class="oswald s3-title"><span class="" style="">НМГ ДОК · ПОДРОБНЕЕ</span></div><div class="oswald s3-sub"><span class="" style="">ТРИ ОБЛАСТИ ПРИМЕНЕНИЯ (НА САМОМ ДЕЛЕ ИХ БОЛЬШЕ)</span></div><div class="s3-cols"><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="Студия: до, процесс и после — Blender и итоговый рендер" autoplay="" class="s3-photo" loop="" muted="" playsinline="" preload="metadata" style="display:block"><source src="assets/video_b8523cddbbbb.mp4" type="video/mp4"/></video><div aria-live="off" class="studio-stage-label" id="studio-stage-label">РАКУРСЫ И ДЕТАЛИ</div><div class="studio-compare-labels" hidden="" id="studio-compare-labels"><div class="studio-compare-label">ИСХОДНАЯ СТУДИЯ</div><div class="studio-compare-label">ФИНАЛЬНЫЙ РЕНДЕР</div></div><div class="s3-phlabel"><span class="" style="">СОЗДАНИЕ ВИРТУАЛЬНОЙ СТУДИИ</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">СТУДИЯ</span></div>
+<div class="s3-smalllabel"><span class="" style="">ЗАДАЧА</span></div>
+<div class="s3-copy"><span class="" style="">Декорация не устраивала канал, бюджета на пересъёмку не было.</span></div>
+<div class="s3-smalllabel"><span class="" style="">РЕШЕНИЕ</span></div>
+<div class="s3-copy"><span class="" style="">Blender · текстуры · Genjutsu. Обновлённый вид студии.</span></div></div></div><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="Генерация B-roll: AI-кадры вместо стоков" autoplay="" class="s3-photo" loop="" muted="" playsinline="" poster="assets/image_75afb6026bf6.jpg" preload="metadata" style="display:block"><source src="assets/video_08f13514a85e.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">ГЕНЕРАЦИЯ B-ROLLов</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">B-roll</span></div>
+<div class="s3-smalllabel"><span class="" style="">ЗАМЕНА СТОКОВ НА ИИ</span></div>
+<div class="s3-copy"><span class="" style="">Воссоздание документальных сцен и дополнительных планов.</span></div>
+<div class="s3-smalllabel"><span class="" style="">ПРОЦЕСС</span></div>
+<div class="s3-copy"><span class="" style="">У студии были стрингеры в разных странах, но я настроил "завод" (модное слово) для генерации намного более качественных кадров.</span></div></div></div><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="Whisper: проблема, задача, решение, результат" autoplay="" class="s3-photo" loop="" muted="" playsinline="" poster="assets/image_e46c1efb2272.jpg" preload="metadata" style="display:block"><source src="assets/video_1badd4bf85e6.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">УПРОЩЕНИЕ ПРОИЗВОДСТВА</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">РАСШИФРОВКА</span></div>
+<div class="s3-smalllabel"><span class="" style="">РАНЬШЕ</span></div>
+<div class="s3-copy"><span class="" style="">Студия отдавала материалы на машинную расшифровку, она была долгой дорогой и некачественной</span></div>
+<div class="s3-smalllabel"><span class="" style="">ТЕПЕРЬ</span></div>
+<div class="s3-copy"><span class="" style="">Настроил все для расшифровки, и теперь ее могут делать даже продюсеры.</span></div></div></div></div><div class="page-no">04</div></section><section class="slide slide-5 slide-triptych"><div class="oswald s3-title"><span class="" style="">ДОПОЛНИТЕЛЬНЫЕ КЕЙСЫ</span></div><div class="oswald s3-sub"><span class="" style="">ЗНАКОМЫЙ ПОПРОСИЛ ПОМОЧЬ С ДИПЛОМОМ СВОЕМУ ДРУГУ</span></div><div class="s3-cols"><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="Грим: было, референс, стало и синхронное сравнение" autoplay="" class="s3-photo" loop="" muted="" playsinline="" preload="metadata" style="display:block"><source src="assets/video_2e6fda68803a.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">ИНТЕГРАЦИЯ ГРИМА</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">ГРИМ</span></div>
+<div class="s3-smalllabel"><span class="" style="">ИСХОДНЫЙ КАДР</span></div>
+<div class="s3-copy"><span class="" style="">Грим на площадке не соответствовал замыслу. Использовал (тут вставить нужный пайплайн) и получилось как надо</span></div>
+<div class="s3-smalllabel"><span class="" style=""></span></div>
+<div class="s3-copy"><span class="" style=""></span></div></div></div><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="AI Influencer: датасет, LoRA и результат" autoplay="" class="s3-photo" loop="" muted="" playsinline="" poster="assets/image_df54179cce41.jpg" preload="metadata" style="display:block"><source src="assets/video_831a9df78b5a.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">AI INFLUENCER</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">AI INFLUENCER</span></div>
+<div class="s3-smalllabel"><span class="" style="">ОДНОЙ КОМПАНИИ ТРЕБОВАЛСЯ AI-ИНФЛЮЕНСЕР</span></div>
+<div class="s3-copy"><span class="" style="">Сейчас облачные модели могут неплохо делать консистентность. И это для коротких рекламных роликов окей. Но если нужны длинные форматы, кино, анимация, то обучение LoRA всё ещё надёжней и по итогу быстрее.</span></div>
+<div class="s3-smalllabel"><span class="" style=""></span></div>
+<div class="s3-copy"><span class="" style=""></span></div></div></div><div class="s3-card">
+<div class="s3-photo-wrap"><video aria-label="Blender, референс, движение и итог — автобус" autoplay="" class="s3-photo" loop="" muted="" playsinline="" poster="assets/image_4fb070090c88.jpg" preload="metadata" style="display:block"><source src="assets/video_c6e66f0f70cd.mp4" type="video/mp4"/></video><div class="s3-phlabel"><span class="" style="">ПОНЯЛ, ЧТО САМ МОГУ ДЕЛАТЬ КУРСЫ :)</span></div></div>
+<div class="s3-rule"></div><div class="s3-details">
+<div class="oswald s3-card-title"><span class="" style="">ИНТЕРНЕТ-КУРСЫ</span></div>
+<div class="s3-smalllabel"><span class="" style="">Решил пройти курсы и понял, что уже знаю больше, чем на них преподают.</span></div>
+<div class="s3-copy"><span class="" style="">В прошлом году читал лекции по рекламной режиссуре, так понравилось, что решил сам пройти курсы. В итоге сделал неплохой ролик в связке Blender + Banana, но понял, что ничему новому меня не научили.</span></div>
+<div class="s3-smalllabel"><span class="" style=""></span></div>
+<div class="s3-copy"><span class="" style=""></span></div></div></div></div><div class="page-no">05</div></section><section class="slide slide-6 slide-agents">
+<div class="s2-left"><div class="oswald s2-head"><span class="" style="">AI-ИНТЕГРАЦИЯ
+</span></div>
+<div class="oswald s2-sub"><span class="" style="">ГДЕ ИИ РЕАЛЬНО МЕНЯЕТ КАЧЕСТВО РАБОТЫ</span></div>
+<div class="body s2-text"><span class="" style="">Я часто сталкиваюсь с двумя крайностями: «ИИ нас всех заменит» и «ИИ — это просто ещё один инструмент». Мне ближе другое: ИИ — это новый уровень взаимодействия с цифровой средой. Он не отменяет профессию, а меняет скорость, глубину и масштаб работы.</span></div>
+<div class="body s2-text second"><span class="" style="">Если совсем по-простому, специалист, который сегодня работает с диджиталом без ИИ, немного похож на человека, который пришёл на кухню шефа и вместо плиты решил развести костёр. За последние полтора года я собрал собственную инфраструктуру: маршрутизацию, контекст проектов, автоматизацию рутины, локальные и облачные модели.</span></div></div>
+<div class="s2-grid agent-grid"><div class="agent-cell ac-1"><div class="agent-number">01</div><div class="agent-bottom"><div class="agent-label oswald"><span>САБМИТТЕР</span></div><div class="agent-copy"><span>Сделал для артиста приложение, которое в фоне через браузер сабмитит его работы в галереи разных групп. Есть возможность подключить LLM, чтобы решать вопросы, не переделывая код.</span></div></div></div><div class="agent-cell ac-2"><div class="agent-number">02</div><div class="agent-bottom"><div class="agent-label oswald"><span>SMM-АНАЛИТИКА</span></div><div class="agent-copy"><span>Создал приложение для компании, которое собирает статистику, записывает её в нужном формате, проводит первичный анализ и пушит вывод в GitHub.</span></div></div></div><div class="agent-cell ac-3"><div class="agent-number">03</div><div class="agent-bottom"><div class="agent-label oswald"><span>REELS</span></div><div class="agent-copy"><span>Пять лет сохранял себе классные монтажные и колористические приёмы в Instagram, и сейчас понемногу автоматизирую их в DaVinci.<br/><br/>Беру то, что делают топовые мировые студии, и применяю это сам.</span></div></div></div><div class="agent-cell ac-4"><div aria-hidden="true" class="agent-media"><video autoplay="" loop="" muted="" playsinline="" poster="assets/image_dfe17cdb0c3d.jpg" preload="metadata"><source src="assets/video_1c126f1e9262.mp4" type="video/mp4"/></video></div><div class="agent-number">04</div><div class="agent-bottom"><div class="agent-label oswald"><span>ИГРОВОЙ ПРОТОТИП</span></div><div class="agent-copy"><span>Очень люблю геймдев, но переход туда требовал больших затрат.<br/><br/>С ИИ сделал прототип за выходные, причём не бессмысленный бой, а системы выбора целей, движения, экономики и боевой механики.</span></div></div></div><div class="agent-cell ac-5"><div aria-hidden="true" class="agent-media"><img alt="" src="assets/image_dfc88e83fe22.jpg"/></div><div class="agent-number">05</div><div class="agent-bottom"><div class="agent-label oswald"><span>3D-ГОРОД</span></div><div class="agent-copy"><span>Собрал реальную модель города для сайта, сделал текстуры, динамическое освещение (двумя способами) и сильно упростил разработку главного экрана браузерной игры.</span></div></div></div><div class="agent-cell ac-6"><div aria-hidden="true" class="agent-media"><video autoplay="" loop="" muted="" playsinline="" poster="assets/image_ee85b06a10ac.jpg" preload="metadata"><source src="assets/video_ba8dbfd6a143.mp4" type="video/mp4"/></video></div><div class="agent-number">06</div><div class="agent-bottom"><div class="agent-label oswald"><span>СЮЖЕТНЫЕ ВЕТКИ</span></div><div class="agent-copy"><span>Каждая большая студия всегда делала свой собственный софт для уникальных процессов.<br/><br/>Я собрал себе сценарное приложение, которое всегда мечтал иметь: с ИИ-агентами, возможностью писать нелинейный сценарий и смотреть его в 3D-проекции.</span></div></div></div><div class="agent-cell ac-7"><div class="agent-number">07</div><div class="agent-bottom"><div class="agent-label oswald"><span>МОДЕЛИ И АГЕНТЫ</span></div><div class="agent-copy"><span>ИИ развивается так быстро, что исследование новинок можно выносить в отдельную специальность. Я уже плюс-минус собрал свой стек, но постоянно тестирую всё новое.</span></div></div></div><div class="agent-cell ac-8"><div aria-hidden="true" class="agent-media"><img alt="" src="assets/image_4a512a3ee223.jpg"/></div><div class="agent-number">08</div><div class="agent-bottom"><div class="agent-label oswald"><span>ЭКОНОМИЯ ТОКЕНОВ</span></div><div class="agent-copy"><span>В начале ИИ-бума компании хвастались, сколько токенов потратят их сотрудники. Сейчас они хвастаются экономией. Каждый свой автоматизированный процесс я сделал практически бесплатным.</span></div></div></div><div class="agent-cell ac-9"><div class="agent-number">09</div><div class="agent-bottom"><div class="agent-label oswald"><span>КОНТЕКСТ ПРОЕКТОВ</span></div><div class="agent-copy"><span>Все эти системы потеряют большую долю своей эффективности, если не будут работать в рамках одного переносимого контура.<br/><br/>Я сделал себе такой и могу переносить его на любое устройство и подключать любую модель без потери контекста.</span></div></div></div></div><div class="s2-metric"><div class="oswald s2-number aiwf"><span class="" style="">AI</span></div><div class="oswald s2-creditlabel"><span class="" style="">WORKFLOWS</span></div><div class="s2-stats"><span class="" style="">Автоматизация · новые возможности · собственная инфраструктура</span></div></div>
+<div class="s2-caption" style="display:none"><span class="" style=""></span></div><div class="page-no">06</div></section><section class="slide slide-7 slide-contact">
+<div class="contact-side"><img alt="Медиа для замены" class="contact-photo" draggable="false" src="assets/image_6d30eb48e756.jpg" style=""/></div>
+<div class="contact-text"><div class="oswald contact-big"><span class="" style="">КОНТАКТЫ</span></div>
+<div class="contact-rule"></div><div class="contact-small oswald"><span class="" style="">АНТОН СЕМАУН</span></div>
+<div class="contact-mail"><a href="mailto:anton.semao@gmail.com" rel="noopener noreferrer" target>anton.semao@gmail.com</a></div>
+<div class="contact-mail"><a href="https://vimeo.com/antonsemaun" rel="noopener noreferrer" target="_blank">vimeo.com/antonsemaun</a></div>
+<div class="contact-mail"><a href="https://www.instagram.com/antonsemaun/" rel="noopener noreferrer" target="_blank">instagram.com/antonsemaun</a></div><div class="contact-mail"><a href="https://t.me/AntonSemaun" rel="noopener noreferrer" target="_blank">t.me/AntonSemaun</a></div>
+<div class="contact-note"><span class="" style="">Режиссура · AI production · Постпродакшн</span></div></div><div class="page-no">07</div></section></div></div></div>
+
+
+<script>
+(function(){
+ const clip=document.querySelector('.slide-2 video.s3-photo');
+ if(!clip)return;
+ const update=()=>{const visible=!!clip.closest('.slide.active');if(visible){const p=clip.play();if(p&&p.catch)p.catch(()=>{});}else clip.pause();};
+ new MutationObserver(update).observe(clip.closest('.slide'),{attributes:true,attributeFilter:['class']});
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)clip.pause();else update();});
+ update();
+})();
+</script><script id="studio-workflow-labels">
+/* Studio steps are synchronized to the already approved 9.8s studio montage. */
+(function(){
+ const video=document.querySelector('.slide-4 .s3-card:first-child video');
+ const step=document.getElementById('studio-stage-label');
+ const compare=document.getElementById('studio-compare-labels');
+ if(!video||!step||!compare)return;
+ const captions=[
+  'ИСХОДНАЯ ПЛОЩАДКА',
+  '3D-СЦЕНА В BLENDER',
+  'ПРОРАБОТКА ИНТЕРЬЕРА',
+  'РАКУРСЫ И ДЕТАЛИ',
+  'ФИНАЛЬНАЯ ВИЗУАЛИЗАЦИЯ'
+ ];
+ const thresholds=[1.50,2.95,4.20,5.25,8.55];
+ let currentIndex=-1;
+ function update(){
+  const t=video.currentTime||0;
+  let i=thresholds.findIndex(b=>t<b);
+  if(i===-1)i=captions.length;
+  if(currentIndex===i)return;
+  currentIndex=i;
+  const final=(i===captions.length);
+  step.hidden=final;
+  compare.hidden=!final;
+  if(!final)step.textContent=captions[i];
+ }
+ video.addEventListener('timeupdate',update);
+ video.addEventListener('seeking',update);
+ video.addEventListener('seeked',update);
+ video.addEventListener('loadedmetadata',update);
+ video.addEventListener('play',update);
+ video.addEventListener('ended',update);
+ update();
+})();
+</script>
+<script>
+/* Documentary gallery: control only the three newly added media slots. */
+(function(){
+  const slide=document.querySelector('.slide-3');
+  if(!slide)return;
+  const clips=[...slide.querySelectorAll('.s2-grid video')];
+  function sync(){
+    const run=slide.classList.contains('active')&&!document.hidden;
+    clips.forEach(video=>{if(run){let p=video.play();if(p&&p.catch)p.catch(()=>{});}else video.pause();});
+  }
+  new MutationObserver(sync).observe(slide,{attributes:true,attributeFilter:['class']});
+  document.addEventListener('visibilitychange',sync);
+  sync();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+  const slides=[...document.querySelectorAll('section.slide')];
+  const stage=document.querySelector('.stage');
+  const outer=document.querySelector('.stage-outer');
+  let page=Math.max(0,slides.findIndex(el=>el.classList.contains('active')));
+  const isLink=(target)=>!!(target.closest && target.closest('a[href]'));
+  function resize(){
+    const scale=Math.min(1,Math.max(.12,(window.innerWidth-24)/1200),Math.max(.12,(window.innerHeight-24)/675));
+    outer.style.width=(1200*scale)+'px';
+    outer.style.height=(675*scale)+'px';
+    stage.style.setProperty('--scale',scale);
+  }
+  function syncVideo(){
+    slides.forEach((slide,i)=>slide.querySelectorAll('video').forEach(v=>{
+      if(i===page){
+        v.muted=true;
+        v.setAttribute('playsinline','');
+        const promise=v.play(); if(promise&&promise.catch) promise.catch(()=>{});
+      }else{v.pause();}
+    }));
+  }
+  function show(i){
+    page=Math.min(slides.length-1,Math.max(0,i));
+    slides.forEach((el,j)=>el.classList.toggle('active',j===page));
+    syncVideo();
+  }
+  function next(){show(page+1);} function prev(){show(page-1);}
+  document.addEventListener('keydown',ev=>{
+    if(ev.altKey||ev.ctrlKey||ev.metaKey) return;
+    if(ev.key==='ArrowRight'||ev.key==='PageDown'||ev.key===' '){ev.preventDefault();next();}
+    if(ev.key==='ArrowLeft'||ev.key==='PageUp'){ev.preventDefault();prev();}
+    if(ev.key==='Home'){ev.preventDefault();show(0);}
+    if(ev.key==='End'){ev.preventDefault();show(slides.length-1);}
+  });
+  let touchStart=null;
+  stage.addEventListener('touchstart', ev=>{if(ev.touches.length===1) touchStart={x:ev.touches[0].clientX,y:ev.touches[0].clientY};}, {passive:true});
+  stage.addEventListener('touchend', ev=>{
+    if(!touchStart||!ev.changedTouches.length) return;
+    const dx=ev.changedTouches[0].clientX-touchStart.x;
+    const dy=ev.changedTouches[0].clientY-touchStart.y;
+    touchStart=null;
+    if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.25){
+      ev.preventDefault(); if(dx<0)next();else prev();
+      suppressClick=Date.now()+450;
+    }
+  }, {passive:false});
+  let suppressClick=0;
+  stage.addEventListener('click',ev=>{
+    if(Date.now()<suppressClick||isLink(ev.target)||ev.target.closest('button,input,textarea,[role="button"]'))return;
+    const x=ev.clientX-stage.getBoundingClientRect().left;
+    if(x<stage.getBoundingClientRect().width*.35)prev();else next();
+  });
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){slides.forEach(s=>s.querySelectorAll('video').forEach(v=>v.pause()));}else syncVideo();});
+  window.addEventListener('resize',resize,{passive:true});
+  resize();show(page);
+})();
+</script></body></html>
