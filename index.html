@@ -185,8 +185,20 @@ body.viewer .contact-note{margin-top:28px;}
 body.viewer .contact-mail{margin-top:11px;margin-bottom:11px;}
 body.viewer .slide[contenteditable],body.viewer [contenteditable]{outline:none!important;cursor:default;}
 body.viewer .slide a{pointer-events:auto;}
+</style><style id="portfolio-language-ui">
+.portfolio-lang-toggle{position:fixed;top:13px;right:16px;z-index:10000;display:flex;gap:1px;padding:3px;border:1px solid #52545b;border-radius:7px;background:rgba(13,14,17,.90);box-shadow:0 3px 14px rgba(0,0,0,.24);font-family:Arial,Helvetica,sans-serif}
+.portfolio-lang-toggle a{min-width:37px;padding:7px 8px;text-align:center;font-size:12px;letter-spacing:.08em;font-weight:700;line-height:1;color:#aaaeb7;text-decoration:none;border-radius:4px}
+.portfolio-lang-toggle a[aria-current="page"]{background:#f3d433;color:#151515}
+.portfolio-lang-toggle a:hover:not([aria-current="page"]){color:#fff;background:#33363f}
+.lang-en .slide-1 .s1-under,.lang-en .slide-1 .s1-intro{font-size:16.5px;line-height:1.17}
+.lang-en .slide-2 .s3-card-title{font-size:33px}
+.lang-en .slide-3 .s2-text{font-size:18px;line-height:1.19}
+.lang-en .slide-4 .s3-copy,.lang-en .slide-5 .s3-copy{font-size:15.5px;line-height:1.15}
+.lang-en .slide-6 .s2-text{font-size:18px;line-height:1.2}
+.lang-en .slide-6 .agent-copy{font-size:11.5px;line-height:1.13}
+@media(max-width:600px){.portfolio-lang-toggle{top:7px;right:8px}.portfolio-lang-toggle a{min-width:32px;padding:6px 6px;font-size:11px}}
 </style></head>
-<body class="viewer">
+<body class="viewer"><nav class="portfolio-lang-toggle" aria-label="Portfolio language"><a href="./" data-lang="ru" hreflang="ru">RU</a><a href="?lang=en" data-lang="en" hreflang="en">EN</a></nav>
 <div class="wrap"><div class="stage-outer" id="out"><div class="stage" style="--scale: 1;"><section class="slide slide-1 active">
 <div class="s1-photo"><img alt="Медиа для замены" class="cover-photo" draggable="false" src="assets/image_1066bfa36789.jpg" style=""/></div>
 <div class="s1-pink"><div class="oswald s1-kicker"><span class="" style="">АНТОН СЕМАУН · AI PORTFOLIO</span></div>
@@ -407,4 +419,4 @@ body.viewer .slide a{pointer-events:auto;}
   window.addEventListener('resize',resize,{passive:true});
   resize();show(page);
 })();
-</script></body></html>
+</script><script src="translations-en.js"></script></body></html>
